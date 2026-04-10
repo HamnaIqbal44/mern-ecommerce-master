@@ -1,73 +1,90 @@
-# mern-ecommerce
+# 🛒 Full-Stack E-commerce Web Application (MERN Stack)
 
-> Frontend-> React JS
+## 🧭 Project Overview
+A MERN-based e-commerce application demonstrating complete e-commerce flows (auth → catalogue → cart → checkout) with MongoDB-backed data handling and a documented setup for local execution.
 
-> Backend-> Node JS & Express JS
+## ✨ Features
+- User registration and sign-in
+- Product catalogue and product details
+- Search and category-based browsing (as implemented)
+- Shopping cart workflow
+- Admin operations (products/categories/orders) *(if configured in your current build)*
+- Optional payment integration variables (Braintree)
 
-> Database-> MongoDB
+## 🏗️ System Architecture
+This repository follows a standard MERN separation:
+- **Client:** React app (`/client`)
+- **Server:** Express API (`server.js`) exposing `/api/*` routes
+- **Database:** MongoDB via Mongoose
+- **Auth:** JWT-based auth flow (configured via environment variables)
 
-## Installation process
-1. #### clone the repo using this command
-    ```bash
-    (https://github.com/HamnaIqbal44/mern-ecommerce-master.git)
-    ```
-2. #### install npm packages
-    1. install backend packages
-    ```bash
-    cd mern-ecommerce
-    npm install
-    ```
-    2. install frontend packages
-    ```bash
-    cd client
-    npm install
-    ```
-3. go to the parent folder of mern-ecommerce & create .env for connection, JWT_SECRET, BRAINTREE_MERCHANT_ID, BRAINTREE_PUBLIC_KEY and BRAINTREE_PRIVATE_KEY.
+**Architecture flow (text):**  
+`User → React Client → Express API (/api) → MongoDB`
 
-    ```bash
-    cd mern-ecommerce
-    sudo nano .env
-    ```
-    (ctrl+x to save & nano follow instruction there)
-    
-    ##### sample code for backend .env
-    ```env
-    MONGODB_URI=YOUR_MONGODB_URI
-    JWT_SECRET=YOUR_JWT_SECRET
-    BRAINTREE_MERCHANT_ID=YOUR_BRAINTREE_MERCHANT_ID
-    BRAINTREE_PUBLIC_KEY=YOUR_BRAINTREE_PUBLIC_KEY
-    BRAINTREE_PRIVATE_KEY=YOUR_BRAINTREE_PRIVATE_KEY
-    ```
-4.  create another .env file inside client directory for REACT_APP_API_URL.
+## 🧰 Tech Stack
+- **Frontend:** React (Create React App in `/client`)
+- **Backend:** Node.js, Express
+- **Database:** MongoDB, Mongoose
+- **Auth:** JWT
+- **Dev tooling:** Nodemon, Concurrently
+- **Payments (optional):** Braintree
 
-    ```bash
-    cd mern-ecommerce/client
-    sudo nano .env
-    ```
-    ##### sample code for frontend .env
-    ```env
-    REACT_APP_API_URL=YOUR_API_URL
-    ```
-5. <b>deploy this project</b> on your local server by using this command
-    ```bash
-    cd mern-ecommerce
-    npm run dev
-    ```
-    #### note: both backend & frontend server will start at once with the above command.
+## ⚙️ Installation and Setup
 
-6. #### Database Structure: (Table: columns)
-    1. categories: _id, name, createdAt, updatedAt;
-    2. orders:  _id, status, products (Array), transaction_id, amount, address, user (Object), createdAt, updatedAt
-    3. products: _id, photo (Object), sold, name, description, price, category, shipping, quantity, createdAt, updatedAt
-    4. users: _id, role, history (Array), name, email, salt, hashed_password, createdAt, updatedAt
+### 1) Clone
+```bash
+git clone https://github.com/HamnaIqbal44/mern-ecommerce-master.git
+cd mern-ecommerce-master
+```
 
-### App Description:
-    1. user can view all products
-    2. user can view single product
-    3. user can search products and view products by category and price range
-    4. user can add to cart checkout products using credit card info
-    5. user can register & sign in
-    6. admin can create, edit, update & delete products
-    7. admin can create categories
-    8. admin can view ordered products
-    9. admin can change the status of a product (processing, shipped, delivered, etc.)
+### 2) Install dependencies (backend + frontend)
+```bash
+npm install
+cd client
+npm install
+cd ..
+```
+
+### 3) Configure environment variables
+Create a `.env` file in the repo root:
+
+```bash
+MONGODB_URI=<YOUR_MONGODB_URI>
+JWT_SECRET=<YOUR_JWT_SECRET>
+BRAINTREE_MERCHANT_ID=<OPTIONAL>
+BRAINTREE_PUBLIC_KEY=<OPTIONAL>
+BRAINTREE_PRIVATE_KEY=<OPTIONAL>
+```
+
+Create `client/.env`:
+
+```bash
+REACT_APP_API_URL=<YOUR_API_URL>
+```
+
+### 4) Run locally (starts both servers)
+```bash
+npm run dev
+```
+
+> Backend defaults to port `5000` unless `PORT` is set; frontend runs via CRA defaults.  
+
+## 🗃️ Dataset
+Not applicable (application uses MongoDB).  
+**Seed data (recommended):** add `seed/sample-products.json` and a seeding script:
+```bash
+node seed/seed.js
+```
+
+## 🧪 Usage / Demo (reviewer quick test)
+1. Start the app (`npm run dev`).
+2. Register/login.
+3. Browse products and add to cart.
+4. Check admin flows (if configured).
+
+
+### 👩‍🎓 Author
+Hamna Iqbal
+
+🎓 Final Year BS Software Engineering
+📌 Project Domain: Software Engineering, Web Development
