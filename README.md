@@ -69,13 +69,6 @@ npm run dev
 
 > Backend defaults to port `5000` unless `PORT` is set; frontend runs via CRA defaults.  
 
-## 🗃️ Dataset
-Not applicable (application uses MongoDB).  
-**Seed data (recommended):** add `seed/sample-products.json` and a seeding script:
-```bash
-node seed/seed.js
-```
-
 ## 🧪 Usage / Demo (reviewer quick test)
 1. Start the app (`npm run dev`).
 2. Register/login.
